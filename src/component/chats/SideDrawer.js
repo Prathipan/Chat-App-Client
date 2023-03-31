@@ -28,7 +28,7 @@ import ChatLoading from "./ChatLoading";
 import ProfileModal from "./ProfileModal";
 import UserListItem from "./UserListItem";
 import { getSender } from "../../codeLogics/ChatLogic";
-import NotificationBadge from "react-notification-badge/lib/components/NotificationBadge";
+import NotificationBadge from "react-notification-badge"
 import {Effect} from 'react-notification-badge';
 
 const SideDrawer = () => {
@@ -155,14 +155,16 @@ const SideDrawer = () => {
             <MenuList pl={2}>
               {!notification.length && "No New Messages"}
               {notification.map((notif) => (
-                 <MenuItem key={notif._id} onClick={() => {
-                  setSelectedChat(notif.chat);
-                  setNotification(notification.filter((n) => n !== notif));
-                }}>
+                <MenuItem
+                  key={notif._id}
+                  onClick={() => {
+                    setSelectedChat(notif.chat);
+                    setNotification(notification.filter((n) => n !== notif));
+                  }}
+                >
                   {notif.chat.isGroupChat
                     ? `New Message in ${notif.chat.chatName}`
-                    : `New Message from ${getSender(user, notif.chat.users)}`
-                    }
+                    : `New Message from ${getSender(user, notif.chat.users)}`}
                 </MenuItem>
               ))}
             </MenuList>
