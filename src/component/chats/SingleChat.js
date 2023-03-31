@@ -18,8 +18,6 @@ import ProfileModal from "./ProfileModal";
 import UpdateGroupChatModal from "./UpdateGroupChatModal";
 import FeedChat from "./PersonalChat";
 import io from "socket.io-client";
-import Lottie from "react-lottie"
-import animationData from "../typing.json";
 
 var socket, selectedChatCompare;
 
@@ -31,14 +29,6 @@ const SingleChat = ({ fetchCall, setFetchCall }) => {
   const [typing, setTyping] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
 
-  const defaultOptions = {
-    loop : true,
-    autoplay : true,
-    animationData : animationData,
-    rendererSettings : {
-      preserveAspectRatio : "xMidYMid slice"
-    }
-  }
 
   const { user, selectedChat, setSelectedChat, notification, setNotification } =
     ChatState();
@@ -227,12 +217,12 @@ const SingleChat = ({ fetchCall, setFetchCall }) => {
             <FormControl onKeyDown={sendMessage} isRequired mt={3}>
               {isTyping ? (
                 <div>
-                  {/* Loading... */}
-                  <Lottie
+                  typing...
+                  {/* <Lottie
                     options={defaultOptions}
                     width={70}
                     style={{ marginBottom: 15, marginLeft: 0 }}
-                  />
+                  /> */}
                 </div>
               ) : (
                 <></>
